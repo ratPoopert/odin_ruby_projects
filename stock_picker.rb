@@ -4,10 +4,10 @@ def stock_picker(prices)
     prices[day] = {day: day, price: price}
   end
   
-  buy_price = prices[0][:price]
-  buy_day = prices[0][:day]
-  sell_price = prices[-1][:price]
-  sell_day = prices[-1][:day]
+  buy_price = prices.first[:price]
+  buy_day = prices.first[:day]
+  sell_price = prices.last[:price]
+  sell_day = prices.last[:day]
 
   prices.each do |this|
     if this[:price] < buy_price && this[:day] < sell_day
