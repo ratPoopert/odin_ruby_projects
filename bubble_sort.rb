@@ -1,25 +1,34 @@
+# frozen_string_literal: true
+
 def bubble_sort(list)
   return list if list.length <= 1
 
   loop do
-    swapped = false
-    (list.length - 1).times do |i|
-      if list[i] > list[i+1]
-        list[i], list[i+1] = list[i+1], list[i]
-        swapped = true
-      end
-    end
-    break if not swapped
+    swap_values(list)
   end
-  return list
+
+  list
+end
+
+def swap_values(list)
+  swapped = false
+  (list.length - 1).times do |i|
+    if list[i] > list[i + 1]
+      list[i], list[i + 1] = list[i + 1], list[i]
+      swapped = true
+    end
+  end
+  break unless swapped
 end
 
 def make_list(number_of_items)
-  list = Array.new
+  list = []
+
   number_of_items.times do
     list.push(Random.new.rand(number_of_items * 10))
   end
-  return list
+
+  list
 end
 
 list = make_list(10)
